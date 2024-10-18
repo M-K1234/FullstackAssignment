@@ -15,6 +15,10 @@
     background-color: #B084CC;
 }
 
+.w-25{
+    width: 25%;
+}
+
 .w-50{
     width: 50%;
 }
@@ -99,6 +103,10 @@ h1,h2,h3,h4{
     font-weight: bold;
 }
 
+.bolder{
+    font-weight: bolder;
+}
+
 .padding-1{
     padding: 10px;
 }
@@ -135,6 +143,11 @@ padding-btm-2{
 .img2{
     height: 350px;
     width: 350px;
+}
+
+.img3{
+    height: 350px;
+    width: 100%;
 }
 
 .margin-1{

@@ -15,6 +15,10 @@
     background-color: #B084CC;
 }
 
+.w-25{
+    width: 25%;
+}
+
 .w-50{
     width: 50%;
 }
@@ -97,6 +101,10 @@ h1,h2,h3,h4{
 
 .bold{
     font-weight: bold;
+}
+
+.bolder{
+    font-weight: bolder;
 }
 
 .padding-1{

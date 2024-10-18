@@ -1,1 +1,79 @@
-<router-outlet />
+
+<div class="flex justify-center">
+    <div id="nav" class="w-75 flex space-between " >
+        <h1 class="color-purple flex flex-center">Music Reviewer</h1>
+        <div class="text-space flex flex-center" >
+            <a class="p-1-r  bold color-purple" routerLink="/news" >News</a>
+            <a class="p-1-r  bold color-purple" routerLink="/review">Reviews</a>
+            <a class="p-1-r bold color-purple" routerLink="/about">About us</a>
+            <a class="p-1-r  bold color-purple" routerLink="/contact">Contact</a>
+            <p>|</p>
+            @if (!isLoggedIn) 
+            {
+                <a class="p-1-r color-purple" routerLink="/sign-up">Sign up</a>
+                <a  class="p-1-r color-purple" routerLink="/login">Login</a>
+            }@else {
+                <div class=" flex flex-center "  >
+                    <fa-icon [icon]="bellIcon" style="float: right; display: inline; "></fa-icon>
+                    <div style="background-color: gray; border-radius: 50%; padding: 2px; text-indent: 0%; width: 25px; height: 25px; display: flex; justify-content: center; align-items:  center; margin-left: 35px;">
+
+                        <fa-icon [icon]="userIcon" style="float: right; display: inline; "></fa-icon>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    </div>
+
+    <router-outlet/>
+    
+    <br><br>
+    <div class="flex justify-center bg-lightblue">
+    <div id="socialMedia" class=" padding-1 w-75 flex flex-center">
+        <h2 class="color-white">Find us</h2>
+        <div>
+        <a href="" class="margin-left-1 color-white">Facbook</a>
+        <a href="" class="margin-left-1 color-white">Instagram</a>
+        <a href="" class="margin-left-1 color-white">Linkedin</a>
+    </div>
+    </div>
+    </div>
+    
+    <div id="bottom" class="bg-blue color-white flex justify-center" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="flex w-75 space-between">
+            <div class="">
+                <h4>Music Reviewer</h4>
+                <p>Address <br>
+                Peter Pan Boulevard <br>
+                2460, <span>Neverland</span></p>
+            </div>
+    
+            <div class="flex ">
+            <div class="flex flex-dir-c margin-r-1">
+                <h4>About us</h4>
+                <a href="" class="margin-btm-1 color-white">Mission and vision</a>
+                <a href="" class="margin-btm-1 color-white">Employees</a>
+            </div>
+            <div class="flex flex-dir-c margin-r-1">
+                <h4>Legal</h4>
+                <a class="margin-btm-1 color-white" href="">Terms</a>
+                <a href="" class="margin-btm-1 color-white">Privacy policy</a>
+                <a href="" class="margin-btm-1 color-white">Other policies</a>
+            </div>
+            <div class="flex flex-dir-c ">
+                <h4>Support</h4>
+                <a class="margin-btm-1 color-white" href="">Contact</a>
+                <a class="margin-btm-1 color-white" href="">F.A.Q</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="bg-blue flex justify-center color-white">
+        <div class="w-75 flex flex-dir-c">
+            <hr style="width: 100%;">
+            <p>Music Reviewer © 2024 M. K. Publications</p>
+    
+        </div>
+    </div>
+    
