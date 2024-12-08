@@ -1,24 +1,12 @@
 <div class="flex justify-center">
-    <div class="w-75">
+    <div class="w-75" *ngFor="let review of reviews">
 
-        <h1 class="color-purple bolder " >Best Metallica album ever?</h1>
-        <p class="color-lighgray">Authored by Muhammad Ali Khan. Created 03-10-2024</p>
+        <h1 class="color-purple bolder " >{{review.title}}</h1>
+        <p class="color-lighgray">Authored by {{review.author}}. Created {{review.creation_date}}</p>
         <img src="" alt="" class="img2">
-        <p>Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. 
-
-            Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention...
-        
-            <p>Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. 
-
-                Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention...
-                
-        <p>Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. 
-
-            Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention...
-        </p>
-    
+        <p>{{review.text}}</p>
         <h1>Final score</h1>
-        <h1>7/10</h1>
+        <h1>{{review.score}}/10</h1>
     </div>
 </div>
 

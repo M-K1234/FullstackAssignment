@@ -36,51 +36,45 @@
     <div class="margin-r-1 margin-left-1" style="width: 50%;">
         <h1 class="color-purple">Latest reviews</h1>
         <hr>
-        <div class="flex margin-1">
-            <img class="img1" src="" alt="">
+        <div class="flex margin-1" *ngFor="let review of reviews">
+            <img class="img1" src="/assets/images/{{review.imgurl}}" alt="">
             <div class="margin-left-1">
-                <h3 class="margin-top-0 color-purple">Best Metallica album ever?</h3>
-                <p class="color-lighgray text-75">Authored by Muhammad Ali Khan. Created 03-10-2024</p>
-                <p>Metallica does it again with latest album Saint Anger, which was released last week. Not to mention... </p>
+                <h3 class="margin-top-0 color-purple">{{review.title}}</h3>
+                <p class="color-lighgray text-75">Authored by {{review.author}}. Created {{review.creation_date}}</p>
+                <p>{{review.text | truncate: 100}}</p>
                 
             </div>
-            
-        </div>
-        <hr style="border:1px solid rgb(231, 231, 231);">
-        <div class="flex margin-1">
-            <img class="img1" src="" alt="">
-            <div class="margin-left-1">
-                <h3 class="margin-top-0 color-purple">Best Metallica album ever?</h3>
-                <p class="color-lighgray text-75">Authored by Muhammad Ali Khan. Created 03-10-2024</p>
-                <p>Metallica does it again with latest album Saint Anger, which was released last week. Not to mention... </p>
-                
-            </div>
-        </div>
-        <hr style="border:1px solid rgb(231, 231, 231);">
-        <div class="flex margin-1">
-            <img class="img1" src="" alt="">
-            <div class="margin-left-1">
-                <h3 class="margin-top-0 color-purple">Best Metallica album ever?</h3>
-                <p class="color-lighgray text-75">Authored by Muhammad Ali Khan. Created 03-10-2024</p>
-                <p>Metallica does it again with latest album Saint Anger, which was released last week. Not to mention... </p>
-                <hr>
-            </div>
-        </div>
-        
     </div>
-    <div class="" >
+    </div>
+    <div class="" style="width: 20%;">
         <h1 class="color-purple">Most popular</h1>
         <hr>
         <div>
-            <a href="">Some news text and stuff</a>
+            <a href="">
+                <p class="bold">{{reviews[0].title}}</p>
+                <p class="color-lighgray text-75">Authored by {{reviews[0].author}}. Created {{reviews[0].creation_date}}</p>
+                <p>{{reviews[0].text | truncate: 100}}</p>
+            </a>
+            
+            <hr style="border:1px solid rgb(231, 231, 231);">
+        </div>
+        
+        <div>
+            <a href="">
+                <p class="bold">{{reviews[1].title}}</p>
+                <p class="color-lighgray text-75">Authored by {{reviews[1].author}}. Created {{reviews[1].creation_date}}</p>
+                <p>{{reviews[1].text | truncate: 100}}</p>
+            </a>
+            
             <hr style="border:1px solid rgb(231, 231, 231);">
         </div>
         <div>
-            <a href="">Some news text and stuff</a>
-            <hr style="border:1px solid rgb(231, 231, 231);">
-        </div>
-        <div>
-            <a href="">Some news text and stuff</a>
+            <a href="">
+                <p class="bold">{{reviews[1].title}}</p>
+                <p class="color-lighgray text-75">Authored by {{reviews[1].author}}. Created {{reviews[1].creation_date}}</p>
+                <p>{{reviews[1].text | truncate: 100}}</p>
+            </a>
+            
             <hr style="border:1px solid rgb(231, 231, 231);">
         </div>
     </div>
@@ -90,14 +84,12 @@
 <div class="flex justify-center">
 <div class="w-75 " id="mostRead">
     <h1 class="color-purple">Most read</h1>
-    <div class="flex ">
-        <img class="img2" src="" alt="">
+    <div class="flex "   >
+        <img class="img2" src="/assets/images/{{reviews[0].imgurl}}" alt="">
         <div class="margin-left-1"> 
-            <h2 class="margin-top-0 color-purple" >Taylor Swift does it again!</h2>
-            <p class="color-lighgray text-75">Authored by Muhammad Ali Khan. Created 03-10-2024</p>
-            <p>Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. 
-
-                Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention... </p>
+            <h2 class="margin-top-0 color-purple" >{{reviews[0].title}}</h2>
+            <p class="color-lighgray text-75">Authored by {{reviews[0].author}}. Created {{reviews[0].creation_date}}</p>
+            <p>{{reviews[0].text}}</p>  
         </div>
     </div>
 </div>
