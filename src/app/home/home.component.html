@@ -17,26 +17,52 @@
 <div class="flex justify-center">
 <div id="overview" class="w-75 flex">
     
-    <div class="" >
+    <div class="" style="width: 15%;">
         <h1 class="color-purple">News</h1>
         <hr>
         <div>
-            <a href="">Some news text and stuff</a>
+            <a href="" routerLink="/news/{{news[0].id_news}}">
+                <p class="bold">{{news[0].title}}</p>
+                <p class="color-lighgray text-75">Authored by {{news[0].author}}. Created {{news[0].creation_date}}</p>
+                <p>{{news[0].text | truncate: 100}}</p>
+            </a>
+            
             <hr style="border:1px solid rgb(231, 231, 231);">
         </div>
         <div>
-            <a href="">Some news text and stuff</a>
+            <a href="" routerLink="/news/{{news[1].id_news}}">
+                <p class="bold">{{news[1].title}}</p>
+                <p class="color-lighgray text-75">Authored by {{news[1].author}}. Created {{news[1].creation_date}}</p>
+                <p>{{news[1].text | truncate: 100}}</p>
+            </a>
+            
             <hr style="border:1px solid rgb(231, 231, 231);">
         </div>
         <div>
-            <a href="">Some news text and stuff</a>
+            <a href="" routerLink="/news/{{news[2].id_news}}">
+                <p class="bold">{{news[2].title}}</p>
+                <p class="color-lighgray text-75">Authored by {{news[2].author}}. Created {{news[2].creation_date}}</p>
+                <p>{{news[2].text | truncate: 100}}</p>
+            </a>
+            
             <hr style="border:1px solid rgb(231, 231, 231);">
         </div>
+        <div>
+            <a href="" routerLink="/news/{{news[3].id_news}}">
+                <p class="bold">{{news[3].title}}</p>
+                <p class="color-lighgray text-75">Authored by {{news[3].author}}. Created {{news[3].creation_date}}</p>
+                <p>{{news[3].text | truncate: 100}}</p>
+            </a>
+            
+            <hr style="border:1px solid rgb(231, 231, 231);">
+        </div>
+        
     </div>
     <div class="margin-r-1 margin-left-1" style="width: 50%;">
         <h1 class="color-purple">Latest reviews</h1>
         <hr>
-        <div class="flex margin-1" *ngFor="let review of reviews">
+        <div class="flex margin-1" *ngFor="let review of reviews" >
+            <a href="" routerLink="/review/{{review.id_review}}" style="display: flex;">
             <img class="img1" src="/assets/images/{{review.imgurl}}" alt="">
             <div class="margin-left-1">
                 <h3 class="margin-top-0 color-purple">{{review.title}}</h3>
@@ -44,13 +70,14 @@
                 <p>{{review.text | truncate: 100}}</p>
                 
             </div>
+        </a>
+        </div>
     </div>
-    </div>
-    <div class="" style="width: 20%;">
+    <div class="" style="width: 15%;">
         <h1 class="color-purple">Most popular</h1>
         <hr>
         <div>
-            <a href="">
+            <a href="" routerLink="/review/{{reviews[0].id_review}}" >
                 <p class="bold">{{reviews[0].title}}</p>
                 <p class="color-lighgray text-75">Authored by {{reviews[0].author}}. Created {{reviews[0].creation_date}}</p>
                 <p>{{reviews[0].text | truncate: 100}}</p>
@@ -60,7 +87,7 @@
         </div>
         
         <div>
-            <a href="">
+            <a href="" routerLink="/review/{{reviews[1].id_review}}" >
                 <p class="bold">{{reviews[1].title}}</p>
                 <p class="color-lighgray text-75">Authored by {{reviews[1].author}}. Created {{reviews[1].creation_date}}</p>
                 <p>{{reviews[1].text | truncate: 100}}</p>
@@ -69,10 +96,10 @@
             <hr style="border:1px solid rgb(231, 231, 231);">
         </div>
         <div>
-            <a href="">
-                <p class="bold">{{reviews[1].title}}</p>
-                <p class="color-lighgray text-75">Authored by {{reviews[1].author}}. Created {{reviews[1].creation_date}}</p>
-                <p>{{reviews[1].text | truncate: 100}}</p>
+            <a href="" routerLink="/review/{{reviews[2].id_review}}" >
+                <p class="bold">{{reviews[2].title}}</p>
+                <p class="color-lighgray text-75">Authored by {{reviews[2].author}}. Created {{reviews[2].creation_date}}</p>
+                <p>{{reviews[2].text | truncate: 100}}</p>
             </a>
             
             <hr style="border:1px solid rgb(231, 231, 231);">

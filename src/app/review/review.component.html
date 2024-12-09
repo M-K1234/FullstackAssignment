@@ -1,9 +1,9 @@
 <div class="flex justify-center">
-    <div class="w-75" *ngFor="let review of reviews">
+    <div class="w-75" >
 
         <h1 class="color-purple bolder " >{{review.title}}</h1>
         <p class="color-lighgray">Authored by {{review.author}}. Created {{review.creation_date}}</p>
-        <img src="" alt="" class="img2">
+        <img src="/assets/images/{{review.imgurl}}" alt="" class="img2">
         <p>{{review.text}}</p>
         <h1>Final score</h1>
         <h1>{{review.score}}/10</h1>
@@ -16,26 +16,37 @@
 </div>
 </div>
 <div class="flex justify-center">
+   
 <div class="w-75 flex   ">
     <div class="w-25 margin-r-1">
-    <img src="" alt="" class="img1 ">
-    <h2 class="color-purple">Title 1</h2>
-    <p>released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released</p>
+        <a href="" routerLink="/review/{{reviews[1].id_review}}" style="display: block;">
+    <img src="/assets/images/{{reviews[1].imgurl}}" alt="" class="img1 ">
+    <h2 class="color-purple">{{reviews[1].title}}</h2>
+    <p>{{reviews[1].text | truncate: 200}}</p>
+</a>
 </div>
-<div class="w-25 margin-r-1">
-    <img src="" alt="" class="img1">
-    <h2 class="color-purple">Title 1</h2>
-    <p>released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released</p>
+    <div class="w-25 margin-r-1">
+        <a href="" routerLink="/review/{{reviews[2].id_review}}" style="display: block;">
+    <img src="/assets/images/{{reviews[2].imgurl}}" alt="" class="img1 ">
+    <h2 class="color-purple">{{reviews[2].title}}</h2>
+    <p>{{reviews[2].text | truncate: 200}}</p>
+    </a>
 </div>
-<div class="w-25 margin-r-1">
-    <img src="" alt="" class="img1">
-    <h2 class="color-purple">Title 1</h2>
-    <p>released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released</p>
+    <div class="w-25 margin-r-1">
+        <a href="" routerLink="/review/{{reviews[3].id_review}}" style="display: block;">
+    <img src="/assets/images/{{reviews[3].imgurl}}" alt="" class="img1 ">
+    <h2 class="color-purple">{{reviews[3].title}}</h2>
+    <p>{{reviews[3].text | truncate: 200}}</p>
+        </a>
 </div>
-<div class="w-25 margin-r-1">
-    <img src="" alt="" class="img1">
-    <h2 class="color-purple">Title 1</h2>
-    <p>released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released last week. Not to mention Metallica does it again with latest album Saint Anger, which was released</p>
+
+    <div class="w-25 margin-r-1">
+        <a href="" routerLink="/review/{{reviews[4].id_review}}" style="display: block;">
+    <img src="/assets/images/{{reviews[4].imgurl}}" alt="" class="img1 ">
+    <h2 class="color-purple">{{reviews[4].title}}</h2>
+    <p>{{reviews[4].text | truncate: 200}}</p>
+        </a>
 </div>
 </div>
 </div>
+
