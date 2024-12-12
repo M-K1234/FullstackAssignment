@@ -1,5 +1,5 @@
 export interface Review {
-    id_review: number;
+    id_review?: number;
     title: string;
     author: string;
     creation_date: Date; 

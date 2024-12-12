@@ -20,4 +20,8 @@ export class ReviewService {
   getReviewById(id: number): Observable<Review> {
     return this.http.get<Review>(this.apiUrl+'/'+id);
   }
+
+  createReview(review: Review): Observable<Review> {
+    return this.http.get<Review>(this.apiUrl+'/create');
+  }
 }

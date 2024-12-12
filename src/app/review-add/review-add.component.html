@@ -1,0 +1,51 @@
+
+<br><br>
+    <div class="flex justify-center">
+    <div class="w-75 flex justify-center">
+<form class="flex border padding-2" style="flex-direction: column;" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+<h1 class="" >Create review</h1>
+      <p for="title">Title*</p>
+      <input formControlName="title" id="title" class="form-control" />
+      <div *ngIf="reviewForm.get('title')?.invalid && reviewForm.get('title')?.touched" >
+        <p class="color-red">Title is required.</p>
+      </div>
+      
+  
+      <p for="author">Author*</p>
+      <input formControlName="author" id="author" class="form-control" />
+      <div *ngIf="reviewForm.get('author')?.invalid && reviewForm.get('author')?.touched" >
+       <p class="color-red">Author is required.</p>
+      </div>
+    
+    <div>
+      <p for="score">Score*</p>
+      <input formControlName="score" id="score" class="form-control" type="number" min="1" max="10" />
+      <div *ngIf="reviewForm.get('score')?.invalid && reviewForm.get('score')?.touched">
+        <p class="color-red">Score must be between 1 and 10.</p>
+      </div>
+
+  
+    <div class=" margin-r-1">
+      <p for="imgurl">Image URL (optional)</p>
+      <input formControlName="imgurl" id="imgurl" type="file" accept="image/*"  style="width: 200px;" />
+    </div>
+</div>
+  
+  <div>
+    <p for="text">Text*</p>
+    <textarea formControlName="text" id="text" class="form-control" style="width: 500px; height: 400px;"></textarea>
+    <div *ngIf="reviewForm.get('text')?.invalid && reviewForm.get('text')?.touched" >
+    <p class="color-red">Text is required.</p>
+    </div>
+    <br><br>
+      <div style="float: right;">
+    <button style="color: white; background-color: gray; margin-right: 10px;" >Cancel</button>
+    <button class="bg-purple color-white" type="submit"  [disabled]="!reviewForm.valid">Submit</button>
+      </div>
+  </div>
+  </form>
+</div>
+    </div>
+    <br><br>
+
+  

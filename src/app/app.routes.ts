@@ -7,11 +7,13 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AccountComponent } from './account/account.component';
+import { ReviewAddComponent } from './review-add/review-add.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'review', component: ReviewComponent},
     {path: 'review/:id', component: ReviewComponent},
+    {path: 'review/create/form', component: ReviewAddComponent},
     {path: 'news', component: NewsComponent},
     {path: 'news/:id', component: NewsComponent},
     {path: 'about', component: AboutComponent},
