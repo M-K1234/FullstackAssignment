@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -24,6 +25,12 @@ export class AuthService {
         Authorization: `Bearer ${token}`, // Attach token to Authorization header
       }),
     };
+  }
+
+  validateToken(): Observable<boolean> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.get<boolean>('http://localhost:8081/auth/validate', { headers });
   }
 
   makeAuthenticatedRequest() {
