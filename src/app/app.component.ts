@@ -5,6 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBell, faUser } from '@fortawesome/free-solid-svg-icons';
 import { HomeComponent } from "./home/home.component";
 import { loginSuccess } from './login/login.component';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -16,8 +17,20 @@ import { loginSuccess } from './login/login.component';
 })
 export class AppComponent {
   title = 'FullstackMandatory1';
-  isLoggedIn = loginSuccess;
+  isLoggedIn: boolean = false;
+  userEmail: string | null = '';
   userIcon = faUser;
   bellIcon = faBell;
-  
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.userEmail = this.authService.getEmail();
+  }
+
+  logout(): void {
+    this.authService.logout();
+    window.location.reload(); // Reload the page to reset the state
+  }
 }

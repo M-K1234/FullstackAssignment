@@ -10,19 +10,20 @@
             <a class="p-1-r bold color-purple" routerLink="/about">About us</a>
             <a class="p-1-r  bold color-purple" routerLink="/contact">Contact</a>
             <p>|</p>
-            @if (!isLoggedIn) 
-            {
+            <!-- Conditionally show login/signup or user's email -->
+            <ng-container *ngIf="!isLoggedIn; else loggedIn">
                 <a class="p-1-r color-purple" routerLink="/sign-up">Sign up</a>
-                <a  class="p-1-r color-purple" routerLink="/login">Login</a>
-            }@else {
-                <div class=" flex flex-center "  >
-                    <fa-icon [icon]="bellIcon" style="float: right; display: inline; "></fa-icon>
-                    <div style="background-color: gray; border-radius: 50%; padding: 2px; text-indent: 0%; width: 25px; height: 25px; display: flex; justify-content: center; align-items:  center; margin-left: 35px;">
-
-                        <fa-icon [icon]="userIcon" style="float: right; display: inline; "></fa-icon>
-                    </div>
+                <a class="p-1-r color-purple" routerLink="/login">Login</a>
+              </ng-container>
+              <ng-template #loggedIn>
+                <div class="right-actions">
+                  <button (click)="logout()">Logout</button>
+                  <fa-icon [icon]="bellIcon" class="icon"></fa-icon>
+                  <div class="user-icon-container">
+                    <fa-icon [icon]="userIcon" class="icon"></fa-icon>
+                  </div>
                 </div>
-            }
+              </ng-template>
         </div>
     </div>
     </div>

@@ -164,3 +164,53 @@ padding-btm-2{
 .text-75{
     font-size: 0.75rem;
 }
+
+
+.right-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Consistent spacing between elements */
+    margin-left: 20px; /* Adjust spacing from the left part of the navbar */
+}
+  
+
+.right-actions button {
+padding: 5px 15px;
+font-size: 14px;
+border: 1px solid #ccc;
+border-radius: 5px;
+background-color: white;
+color: purple;
+cursor: pointer;
+}
+  
+.right-actions button:hover {
+background-color: #f0f0f0; 
+}
+  
+
+.right-actions .icon {
+font-size: 20px;
+cursor: pointer;
+}
+  
+
+.right-actions .user-icon-container {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    background-color: rgb(52, 127, 194);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+    position: relative;
+}
+  
+  
+.right-actions .user-icon-container .icon {
+    font-size: 18px;
+    color: white; 
+    transform: translateX(-15px); 
+    line-height: 0; 
+}
