@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -16,7 +16,20 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
   }
-  
+
+  getAuthHeaders() {
+    const token = localStorage.getItem('token');
+    return {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`, // Attach token to Authorization header
+      }),
+    };
+  }
+
+  makeAuthenticatedRequest() {
+    return this.http.get('http://localhost:8081/reviews/create', this.getAuthHeaders());
+  }
+
   register(fullName: string, email: string, username: string, password: string) {
     return this.http.post('http://localhost:8081/auth/register', {
       fullName,

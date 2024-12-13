@@ -8,12 +8,13 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AccountComponent } from './account/account.component';
 import { ReviewAddComponent } from './review-add/review-add.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'review', component: ReviewComponent},
     {path: 'review/:id', component: ReviewComponent},
-    {path: 'review/create/form', component: ReviewAddComponent},
+    {path: 'review/create/form', component: ReviewAddComponent, canActivate: [AuthGuard]},
     {path: 'news', component: NewsComponent},
     {path: 'news/:id', component: NewsComponent},
     {path: 'about', component: AboutComponent},
