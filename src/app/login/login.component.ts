@@ -33,7 +33,7 @@ export class LoginComponent {
         setTimeout(() => {
           this.successMessage = null; // Clear the message
           window.location.href = '/';
-        }, 2000);         
+        }, 2000);
       },
       error: (err) => {
         console.log(err);

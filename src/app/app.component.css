@@ -172,6 +172,20 @@ padding-btm-2{
     gap: 15px; /* Consistent spacing between elements */
     margin-left: 20px; /* Adjust spacing from the left part of the navbar */
 }
+
+.create-review-btn {
+    background-color: #6a1b9a; /* Purple background */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-right: 10px; /* Space before Logout button */
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .create-review-btn:hover {
+    background-color: #4a148c; /* Darker purple on hover */
+  }
   
 
 .right-actions button {
