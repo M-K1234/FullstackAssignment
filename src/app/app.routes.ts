@@ -11,7 +11,8 @@ import { ReviewAddComponent } from './review-add/review-add.component';
 import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-    {path: '', component: HomeComponent},
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: 'home', component: HomeComponent},
     {path: 'review', component: ReviewComponent},
     {path: 'review/:id', component: ReviewComponent},
     {path: 'review/create/form', component: ReviewAddComponent, canActivate: [AuthGuard]},
@@ -21,5 +22,5 @@ export const routes: Routes = [
     {path: 'contact', component: ContactComponent},
     {path: 'login', component: LoginComponent},
     {path: 'sign-up', component: SignUpComponent},
-    {path: 'account', component: AccountComponent}
+    {path: 'account', component: AccountComponent},
 ];

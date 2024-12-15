@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +17,7 @@ export class SignUpComponent {
   password = '';
   repeatPassword = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   submitForm() {
     if (this.password !== this.repeatPassword) {
@@ -25,7 +26,9 @@ export class SignUpComponent {
     }
     this.authService.register(this.fullName, this.email, this.username, this.password)
       .subscribe({
-        next: res => console.log('Registration successful', res),
+        next: res => {
+          this.router.navigate(['/login']);
+        },
         error: err => console.error('Error', err)
       });
   }
