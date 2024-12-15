@@ -24,4 +24,10 @@
       </form>
     </div>
   </div>
+  <!-- Success Message -->
+<div *ngIf="successMessage" class="success-message">
+  {{ successMessage }}
+</div>
+  <div class="flex justify-center">
+    <p>Already have an account? <a routerLink="/login">Sign in</a></p>
   

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
@@ -15,6 +16,7 @@ export class SignUpComponent {
   username = '';
   password = '';
   repeatPassword = '';
+  successMessage: string | null = null;
 
   constructor(private authService: AuthService) {}
 
@@ -28,5 +30,10 @@ export class SignUpComponent {
         next: res => console.log('Registration successful', res),
         error: err => console.error('Error', err)
       });
+    this.successMessage = 'Registration successful! Redirecting to login page...';
+    setTimeout(() => {
+      this.successMessage = null; // Clear the message
+      window.location.href = '/login';
+    }, 2000);
   }
 }
