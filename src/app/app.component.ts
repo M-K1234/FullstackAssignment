@@ -31,6 +31,6 @@ export class AppComponent {
 
   logout(): void {
     this.authService.logout();
-    window.location.reload(); // Reload the page to reset the state
+    window.location.href = '/';
   }
 }

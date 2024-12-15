@@ -1,6 +1,6 @@
 // review.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../enviroments/enviroment';
 import { Review } from '../models/review.model';
@@ -22,6 +22,11 @@ export class ReviewService {
   }
 
   createReview(review: Review): Observable<Review> {
-    return this.http.get<Review>(this.apiUrl+'/create');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}` // Include token if required
+    });
+  
+    return this.http.post<Review>(`${this.apiUrl}/create`, review, { headers });
   }
+  
 }
