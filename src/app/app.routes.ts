@@ -11,15 +11,15 @@ import { ReviewAddComponent } from './review-add/review-add.component';
 import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-    {path: '', component: HomeComponent},
-    {path: 'review', component: ReviewComponent},
-    {path: 'review/:id', component: ReviewComponent},
-    {path: 'review/create/form', component: ReviewAddComponent, canActivate: [AuthGuard]},
-    {path: 'news', component: NewsComponent},
-    {path: 'news/:id', component: NewsComponent},
-    {path: 'about', component: AboutComponent},
-    {path: 'contact', component: ContactComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'sign-up', component: SignUpComponent},
-    {path: 'account', component: AccountComponent}
+  { path: '', component: HomeComponent },
+  { path: 'review', component: ReviewComponent },
+  { path: 'review/:id', component: ReviewComponent },
+  { path: 'review/create/form', component: ReviewAddComponent, canActivate: [AuthGuard] },
+  { path: 'news', component: NewsComponent },
+  { path: 'news/:id', component: NewsComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'account', component: AccountComponent } // Ruten til kontosiden
 ];
