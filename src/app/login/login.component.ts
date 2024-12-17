@@ -22,12 +22,9 @@ export class LoginComponent {
   }
 
   onsubmit(){
-   this.http.post('http://localhost:8081/auth/login', null, {
-    params: {
+   this.http.post('http://localhost:8081/auth/login',{
       email: this.email,
-
       password: this.password
-    }
     }).subscribe({
       next: (data: any) => {
         
