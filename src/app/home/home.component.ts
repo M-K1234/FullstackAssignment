@@ -16,7 +16,6 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent {
 
-  jwtToken = new localStorage
   news: News[] = [];
   reviews: Review[] = [];
   errorMessage: string = '';
