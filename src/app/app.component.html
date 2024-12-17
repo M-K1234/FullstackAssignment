@@ -1,83 +1,83 @@
-
 <div class="flex justify-center">
-    <div id="nav" class="w-75 flex space-between " >
-        <a routerLink="/">
+    <div id="nav" class="w-75 flex space-between">
+      <a routerLink="/">
         <h1 class="color-purple flex flex-center">Music Reviewer</h1>
-    </a>
-        <div class="text-space flex flex-center" >
-            <a class="p-1-r  bold color-purple" routerLink="/news" >News</a>
-            <a class="p-1-r  bold color-purple" routerLink="/review">Reviews</a>
-            <a class="p-1-r bold color-purple" routerLink="/about">About us</a>
-            <a class="p-1-r  bold color-purple" routerLink="/contact">Contact</a>
-            <p>|</p>
-            <!-- Conditionally show login/signup or user's email -->
-            <ng-container *ngIf="!isLoggedIn; else loggedIn">
-                <a class="p-1-r color-purple" routerLink="/sign-up">Sign up</a>
-                <a class="p-1-r color-purple" routerLink="/login">Login</a>
-              </ng-container>
-              <ng-template #loggedIn>
-                <div class="right-actions">
-                  <button (click)="logout()">Logout</button>
-                  <button class="create-review-btn" routerLink="/review/create/form">Create Review</button>
-                  <fa-icon [icon]="bellIcon" class="icon"></fa-icon>
-                  <div class="user-icon-container">
-                    <fa-icon [icon]="userIcon" class="icon"></fa-icon>
-                  </div>
-                </div>
-              </ng-template>
-        </div>
+      </a>
+      <div class="text-space flex flex-center">
+        <a class="p-1-r bold color-purple" routerLink="/news">News</a>
+        <a class="p-1-r bold color-purple" routerLink="/review">Reviews</a>
+        <a class="p-1-r bold color-purple" routerLink="/about">About us</a>
+        <a class="p-1-r bold color-purple" routerLink="/contact">Contact</a>
+        <p>|</p>
+        
+        <!-- Conditionally show login/signup or user's email -->
+        <ng-container *ngIf="!isLoggedIn; else loggedIn">
+          <a class="p-1-r color-purple" routerLink="/sign-up">Sign up</a>
+          <a class="p-1-r color-purple" routerLink="/login">Login</a>
+        </ng-container>
+        <ng-template #loggedIn>
+          <div class="right-actions">
+            <button (click)="logout()">Logout</button>
+            <button class="create-review-btn" routerLink="/review/create/form">Create Review</button>
+            <fa-icon [icon]="bellIcon" class="icon"></fa-icon>
+  
+            <!-- User icon button that navigates to the account page -->
+            <button (click)="goToAccount()" class="user-icon-button">
+              <fa-icon [icon]="userIcon" class="icon"></fa-icon>
+            </button>
+          </div>
+        </ng-template>
+      </div>
     </div>
-    </div>
-
-    <router-outlet/>
-    
-    <br><br>
-    <div class="flex justify-center bg-lightblue">
-    <div id="socialMedia" class=" padding-1 w-75 flex flex-center">
-        <h2 class="color-white">Find us</h2>
-        <div>
-        <a href="" class="margin-left-1 color-white">Facbook</a>
+  </div>
+  
+  <router-outlet/>
+  
+  <br><br>
+  
+  <div class="flex justify-center bg-lightblue">
+    <div id="socialMedia" class="padding-1 w-75 flex flex-center">
+      <h2 class="color-white">Find us</h2>
+      <div>
+        <a href="" class="margin-left-1 color-white">Facebook</a>
         <a href="" class="margin-left-1 color-white">Instagram</a>
-        <a href="" class="margin-left-1 color-white">Linkedin</a>
+        <a href="" class="margin-left-1 color-white">LinkedIn</a>
+      </div>
     </div>
-    </div>
-    </div>
-    
-    <div id="bottom" class="bg-blue color-white flex justify-center" style="padding-top: 40px; padding-bottom: 40px;">
-        <div class="flex w-75 space-between">
-            <div class="">
-                <h4>Music Reviewer</h4>
-                <p>Address <br>
-                Peter Pan Boulevard <br>
-                2460, <span>Neverland</span></p>
-            </div>
-    
-            <div class="flex ">
-            <div class="flex flex-dir-c margin-r-1">
-                <h4>About us</h4>
-                <a href="" class="margin-btm-1 color-white">Mission and vision</a>
-                <a href="" class="margin-btm-1 color-white">Employees</a>
-            </div>
-            <div class="flex flex-dir-c margin-r-1">
-                <h4>Legal</h4>
-                <a class="margin-btm-1 color-white" href="">Terms</a>
-                <a href="" class="margin-btm-1 color-white">Privacy policy</a>
-                <a href="" class="margin-btm-1 color-white">Other policies</a>
-            </div>
-            <div class="flex flex-dir-c ">
-                <h4>Support</h4>
-                <a class="margin-btm-1 color-white" href="">Contact</a>
-                <a class="margin-btm-1 color-white" href="">F.A.Q</a>
-            </div>
+  </div>
+  
+  <div id="bottom" class="bg-blue color-white flex justify-center" style="padding-top: 40px; padding-bottom: 40px;">
+    <div class="flex w-75 space-between">
+      <div>
+        <h4>Music Reviewer</h4>
+        <p>Address <br> Peter Pan Boulevard <br> 2460, <span>Neverland</span></p>
+      </div>
+  
+      <div class="flex">
+        <div class="flex flex-dir-c margin-r-1">
+          <h4>About us</h4>
+          <a href="" class="margin-btm-1 color-white">Mission and vision</a>
+          <a href="" class="margin-btm-1 color-white">Employees</a>
         </div>
-    </div>
-    </div>
-    
-    <div class="bg-blue flex justify-center color-white">
-        <div class="w-75 flex flex-dir-c">
-            <hr style="width: 100%;">
-            <p>Music Reviewer © 2024 M. K. Publications</p>
-    
+        <div class="flex flex-dir-c margin-r-1">
+          <h4>Legal</h4>
+          <a class="margin-btm-1 color-white" href="">Terms</a>
+          <a href="" class="margin-btm-1 color-white">Privacy policy</a>
+          <a href="" class="margin-btm-1 color-white">Other policies</a>
         </div>
+        <div class="flex flex-dir-c">
+          <h4>Support</h4>
+          <a class="margin-btm-1 color-white" href="">Contact</a>
+          <a class="margin-btm-1 color-white" href="">F.A.Q</a>
+        </div>
+      </div>
     </div>
-    
+  </div>
+  
+  <div class="bg-blue flex justify-center color-white">
+    <div class="w-75 flex flex-dir-c">
+      <hr style="width: 100%;">
+      <p>Music Reviewer © 2024 M. K. Publications</p>
+    </div>
+  </div>
+  
