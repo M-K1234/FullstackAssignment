@@ -36,7 +36,7 @@ export class LoginComponent {
         setTimeout(() => {
           
           this.successMessage = null; // Clear the message
-          this.router.navigate(['home'])
+          window.location.href = '/home';
           
         }, 2000);         
       },
