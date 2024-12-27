@@ -1,59 +1,110 @@
 <div class="flex justify-center">
     <div class="w-75">
-        <h1>Your account</h1>
+      <h1>Your account</h1>
     </div>
-</div>
-<div class="flex justify-center">
+  </div>
+  
+  <div class="flex justify-center">
     <div class="w-75">
-        
-        <div class="w-50">
-            <div class="  flex space-between" style="align-items: end;">
-                <div>
-                    <p>Full name</p>
-                    <p>Muhammad Ali Khan</p>
-                </div>
-            <fa-icon [icon]="faPen" style="float: right; display: inline; margin-bottom: 16px;"></fa-icon>
+      <!-- Full Name -->
+      <div class="w-50">
+        <div class="flex space-between" style="align-items: end;">
+          <div>
+            <p>Full name</p>
+            <div *ngIf="editMode.fullName; else fullNameDisplay">
+              <input [(ngModel)]="account.fullName" *ngIf="account" type="text" class="edit-input" />
+            </div>
+            <ng-template #fullNameDisplay>
+              <p>{{ account?.fullName }}</p>
+            </ng-template>
+          </div>
+          <fa-icon
+            [icon]="faPen"
+            style="float: right; display: inline; margin-bottom: 16px;"
+            (click)="toggleEditMode('fullName')"
+          ></fa-icon>
         </div>
-        <hr>
+        <hr />
+      </div>
+  
+      <!-- Username -->
+      <div class="w-50">
+        <div class="flex space-between" style="align-items: end;">
+          <div>
+            <p>Username</p>
+            <div *ngIf="editMode.username; else usernameDisplay">
+              <input [(ngModel)]="account.username" *ngIf="account" type="text" class="edit-input" />
+            </div>
+            <ng-template #usernameDisplay>
+              <p>{{ account?.username }}</p>
+            </ng-template>
+          </div>
+          <fa-icon
+            [icon]="faPen"
+            style="float: right; display: inline; margin-bottom: 16px;"
+            (click)="toggleEditMode('username')"
+          ></fa-icon>
         </div>
-        <div class="w-50">
-            <div class="  flex space-between" style="align-items: end;">
-                <div>
-                    <p>Username</p>
-                    <p>Ali1234</p>
-                </div>
-            <fa-icon [icon]="faPen" style="float: right; display: inline; margin-bottom: 16px;"></fa-icon>
+        <hr />
+      </div>
+  
+      <!-- Password -->
+      <div class="w-50">
+        <div class="flex space-between" style="align-items: end;">
+          <div>
+            <p>Password</p>
+            <div *ngIf="editMode.password; else passwordDisplay">
+              <input [(ngModel)]="account.password" *ngIf="account" type="password" class="edit-input" />
+            </div>
+            <ng-template #passwordDisplay>
+              <p>********</p>
+            </ng-template>
+          </div>
+          <fa-icon
+            [icon]="faPen"
+            style="float: right; display: inline; margin-bottom: 16px;"
+            (click)="toggleEditMode('password')"
+          ></fa-icon>
         </div>
-        <hr>
+        <hr />
+      </div>
+  
+      <!-- Email -->
+      <div class="w-50">
+        <div class="flex space-between" style="align-items: end;">
+          <div>
+            <p>E-mail</p>
+            <div *ngIf="editMode.email; else emailDisplay">
+              <input [(ngModel)]="account.email" *ngIf="account" type="email" class="edit-input" />
+            </div>
+            <ng-template #emailDisplay>
+              <p>{{ account?.email }}</p>
+            </ng-template>
+          </div>
+          <fa-icon
+            [icon]="faPen"
+            style="float: right; display: inline; margin-bottom: 16px;"
+            (click)="toggleEditMode('email')"
+          ></fa-icon>
         </div>
-        <div class="w-50">
-            <div class="  flex space-between" style="align-items: end;">
-                <div>
-                    <p>Password</p>
-                    <p>************</p>
-                </div>
-            <fa-icon [icon]="faPen" style="float: right; display: inline; margin-bottom: 16px;"></fa-icon>
-        </div>
-        <hr>
-        </div>
-        <div class="w-50">
-            <div class="  flex space-between" style="align-items: end;">
-                <div>
-                    <p>E-mail</p>
-                    <p>mak_121212&#64;hotmail.com</p>
-                </div>
-            <fa-icon [icon]="faPen" style="float: right; display: inline; margin-bottom: 16px;"></fa-icon>
-        </div>
-        <hr>
-        <div style="float: right;">
-            <button style="color: white; background-color: gray; margin-right: 10px;">Cancel</button>
-            <button class="bg-purple   color-white">Save</button>
-        </div>
-        </div>
+        <hr />
+      </div>
+  
+      <!-- Save and Cancel Buttons -->
+      <div style="float: right;">
+        <button
+          style="color: white; background-color: gray; margin-right: 10px;"
+          (click)="cancelEdit()"
+        >
+          Cancel
+        </button>
+        <button
+          class="bg-purple color-white"
+          (click)="saveChanges()"
+        >
+          Save
+        </button>
+      </div>
     </div>
-</div>
-<div class="flex justify-center">
-    <div class="w-75">
-        
-    </div>
-</div>
+  </div>
+  

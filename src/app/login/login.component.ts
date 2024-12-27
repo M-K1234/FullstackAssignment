@@ -37,7 +37,6 @@ export class LoginComponent {
           
           this.successMessage = null; // Clear the message
           window.location.href = '/home';
-          
         }, 2000);         
       },
       error: (err) => {
