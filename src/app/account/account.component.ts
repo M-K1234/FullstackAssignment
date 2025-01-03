@@ -1,10 +1,11 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Inject, OnInit} from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AccountService } from '../../services/account.service';
 import { Account } from '../../models/account.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-account',
@@ -18,23 +19,23 @@ export class AccountComponent implements OnInit {
   faPen = faPen;
   editMode = { fullName: false, username: false, email: false, password: false };
 
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService, @Inject(AuthService) private authService: AuthService) {}
 
   ngOnInit() {
       this.loadAccount();
   }
 
   loadAccount() {
-    const accountId = 1; // Or make it dynamic
-    this.accountService.getAccount(accountId).subscribe({
-      next: (data) => {
-        this.account = data; // Bind the fetched data to the component
-      },
-      error: (err) => {
-        console.error('Error fetching account:', err);
-      },
+    this.accountService.getAccount().subscribe({
+        next: (data) => {
+            this.account = data;
+        },
+        error: (err) => {
+            console.error('Error fetching account:', err);
+        },
     });
   }
+
 
   toggleEditMode(field: 'fullName' | 'username' | 'email' | 'password'): void {
     this.editMode[field] = !this.editMode[field];
