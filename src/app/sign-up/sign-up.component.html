@@ -2,11 +2,12 @@
   <h3>Create account</h3>
 </div>
 <div class="flex justify-center">
+  
   <div class="w-75 flex justify-center">
     <form #signUpForm="ngForm" (ngSubmit)="submitForm()" class="flex border padding-2" novalidate>
       <div class="margin-r-1">
         <p>Full name</p>
-        <input 
+        <input
           type="text" 
           [(ngModel)]="fullName"
           name="fullName"

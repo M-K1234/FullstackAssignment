@@ -28,7 +28,10 @@ export class AuthService {
   }
 
   checkEmailAndUsername(email: string, username: string): Observable<any> {
-    return this.http.post('/auth/check-duplicates', { email, username });
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    const body = { email, username };
+    return this.http.post('http://localhost:8081/auth/check-duplicates', body, { headers });
   }
 
   validateToken(): Observable<boolean> {
