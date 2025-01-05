@@ -11,7 +11,7 @@ import { ReviewAddComponent } from './review-add/review-add.component';
 import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'review', component: ReviewComponent},
     {path: 'review/:id', component: ReviewComponent},
