@@ -112,7 +112,11 @@ export class AccountComponent implements OnInit {
               console.log('Account updated successfully');
               this.backendErrorMessage = null;
               this.successMessage = 'Account updated successfully!';
-  
+              
+              // Hide the success message after 3 seconds
+              setTimeout(() => {
+                this.successMessage = null;
+              }, 3000);
               // Update JWT token if email changes
               if (response.token) {
                 localStorage.setItem('token', response.token);
@@ -129,6 +133,9 @@ export class AccountComponent implements OnInit {
             error: (err) => {
               console.error('Error updating account:', err);
               this.backendErrorMessage = err?.error || 'Error updating account.';
+              setTimeout(() => {
+                this.backendErrorMessage = null;
+              }, 3000);
             }
           });
         },
