@@ -6,11 +6,12 @@ import { TruncatePipe } from '../../pipes/truncate.pipe';
 import { NewsService } from '../../services/news.service';
 import { News } from '../../models/news.model';
 import { RouterLink } from '@angular/router';
+import { DeezerComponent } from '../deezer/deezer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, TruncatePipe, RouterLink],
+  imports: [NgFor, TruncatePipe, RouterLink, DeezerComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

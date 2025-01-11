@@ -17,7 +17,7 @@
 <div class="flex justify-center">
 <div id="overview" class="w-75 flex">
     
-    <div class="" style="width: 15%;">
+    <div class="" style="width: 20%;">
         <h1 class="color-purple">News</h1>
         <hr>
         <div *ngFor="let newsEntry of news">
@@ -29,7 +29,7 @@
             
             <hr style="border:1px solid rgb(231, 231, 231);">
         </div>
-        
+        <app-deezer></app-deezer>
     </div>
     <div class="margin-r-1 margin-left-1" style="width: 50%;">
         <h1 class="color-purple">Latest reviews</h1>
@@ -46,7 +46,7 @@
         </a>
         </div>
     </div>
-    <div class="" style="width: 20%;">
+    <div class="" style="width: 15%;">
         <h1 class="color-purple">Most popular</h1>
         <hr>
         <div *ngFor="let review of reviews">
@@ -58,8 +58,10 @@
             
             <hr style="border:1px solid rgb(231, 231, 231);">
         </div>
+        
     </div>
 </div>
+
 </div>
 
 <!-- <div class="flex justify-center">

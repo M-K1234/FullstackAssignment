@@ -1,0 +1,16 @@
+
+<h2 class="color-purple">Top albums</h2>
+<p class="color-lighgray text-75">Feed: Deezer</p>
+<div class="album-list-container">
+    <div class="album-list">
+      <div class="album-item" *ngFor="let album of albums">
+        <img [src]="album.cover_small" alt="Album Cover" class="album-cover" />
+        <div class="album-info">
+          <a [href]="album.link" target="_blank" class="album-title">{{ album.title }}</a>
+          <a [href]="album.artist.link" target="_blank" class="artist-name">{{ album.artist.name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
