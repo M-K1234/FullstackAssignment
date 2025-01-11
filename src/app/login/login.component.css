@@ -20,6 +20,29 @@
     border-radius: 5px; /* Slightly rounded corners */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     z-index: 1000; /* Ensure it appears on top */
+    opacity: 1; /* Fully visible initially */
+  }
+
+  .error-message {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f8d7da; /* Light red background for error */
+    color: #721c24; /* Dark red text for error */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 1; /* Fully visible initially */
+    transition: opacity 2s ease-out; /* Fade-out transition */
+  }
+  
+  .error-message.fade-out {
+    opacity: 0; /* Make it invisible */
   }
   
   

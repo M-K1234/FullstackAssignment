@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
       {
         provide: HTTP_INTERCEPTORS,
         useClass: AuthInterceptorService,
-        multi: true, // Allows multiple interceptors
+        multi: true,
       },
     importProvidersFrom(FormsModule)
   ]

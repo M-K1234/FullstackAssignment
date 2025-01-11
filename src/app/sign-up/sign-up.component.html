@@ -1,33 +1,121 @@
 <div class="flex justify-center">
-    <h3>Create account</h3>
-  </div>
-  <div class="flex justify-center">
-    <div class="w-75 flex justify-center">
-      <form (ngSubmit)="submitForm()" class="flex border padding-2">
-        <div class="margin-r-1">
-          <p>Full name</p>
-          <input type="text" [(ngModel)]="fullName" name="fullName">
-          <p>Username</p>
-          <input type="text" [(ngModel)]="username" name="username">
-          <p>Password</p>
-          <input type="password" [(ngModel)]="password" name="password">
+  <h3>Create account</h3>
+</div>
+<div class="flex justify-center">
+  
+  <div class="w-75 flex justify-center">
+    <form #signUpForm="ngForm" (ngSubmit)="submitForm()" class="flex border padding-2" novalidate>
+      <div class="margin-r-1">
+        <p>Full name</p>
+        <input
+          type="text" 
+          [(ngModel)]="fullName"
+          name="fullName"
+          required
+          minlength="2"
+          maxlength="50"
+          pattern="^[A-Za-zÀ-ÿ'’.\- ]+$"
+          #fullNameRef="ngModel"
+        >
+        <div *ngIf="fullNameRef.invalid && (fullNameRef.dirty || fullNameRef.touched)">
+          <small *ngIf="fullNameRef.errors?.['required']">Full name is required.</small>
+          <small *ngIf="fullNameRef.errors?.['pattern']">Letters, dash (-), and spaces only.</small>
         </div>
-        <div>
-          <p>E-mail</p>
-          <input type="text" [(ngModel)]="email" name="email">
-          <p>Repeat password</p>
-          <input type="password" [(ngModel)]="repeatPassword" name="repeatPassword">
-          <button type="submit" class="padding-1" style="font-weight: bold; float: right; background-color: #B084CC; color: white; border-style: none;">
-            Sign up
-          </button>
+
+        <p>Username</p>
+        <input 
+          type="text" 
+          [(ngModel)]="username" 
+          name="username"
+          required
+          minlength="3"
+          maxlength="20"
+          pattern="^[a-zA-Z0-9_-]+$"
+          (blur)="validateFields()"
+          #usernameRef="ngModel"
+        >
+        <div *ngIf="usernameError">
+          <small class="error">{{ usernameError }}</small>
         </div>
-      </form>
-    </div>
+        <div *ngIf="usernameRef.invalid && (usernameRef.dirty || usernameRef.touched)">
+          <small *ngIf="usernameRef.errors?.['required']">Username is required.</small>
+          <small *ngIf="usernameRef.errors?.['pattern']">Only letters, numbers, underscores, and hyphens allowed.</small>
+          <small *ngIf="usernameRef.errors?.['minlength']">Minimum 3 characters required.</small>
+        </div>
+
+        <p>Password</p>
+        <input 
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          required
+          minlength="6"
+          maxlength="64"
+          #passwordRef="ngModel"
+        >
+        <div *ngIf="passwordRef.invalid && (passwordRef.dirty || passwordRef.touched)">
+          <small *ngIf="passwordRef.errors?.['required']">Password is required.</small>
+          <small *ngIf="passwordRef.errors?.['minlength']">Minimum 6 characters required.</small>
+          <small *ngIf="passwordRef.errors?.['maxlength']">Maximum 64 characters allowed.</small>
+        </div>
+      </div>
+      
+      <div>
+        <p>E-mail</p>
+        <input
+          type="text"
+          [(ngModel)]="email"
+          name="email"
+          required
+          email
+          (blur)="validateFields()"
+          [class.invalid]="emailError"
+          #emailRef="ngModel"
+        >
+        <div *ngIf="emailError">
+          <small class="error">{{ emailError }}</small>
+        </div>
+        <div *ngIf="emailRef.invalid && (emailRef.dirty || emailRef.touched)">
+          <small class="error" *ngIf="emailRef.errors?.['required']">Email is required.</small>
+          <small class="error" *ngIf="emailRef.errors?.['email']">Enter a valid email.</small>
+        </div>
+
+        <p>Repeat password</p>
+        <input 
+          type="password"
+          [(ngModel)]="repeatPassword"
+          name="repeatPassword"
+          required
+          #repeatPasswordRef="ngModel"
+        >
+        <div *ngIf="(repeatPassword !== password) && repeatPasswordRef.touched">
+          <small>Passwords do not match.</small>
+        </div>
+
+        <button 
+          type="submit" 
+          class="padding-1" 
+          [disabled]="signUpForm.invalid || password !== repeatPassword || emailError || usernameError"  
+          style="font-weight: bold; float: right; background-color: #B084CC; color: white; border-style: none;"
+        >
+          Sign up
+        </button>
+      </div>
+    </form>
   </div>
-  <!-- Success Message -->
-<div *ngIf="successMessage" class="success-message">
+</div>
+
+<!-- Backend Error Message -->
+<div *ngIf="backendErrorMessage" class="error-message">
+  {{ backendErrorMessage }}
+</div>
+
+
+<!-- Success Message -->
+<div *ngIf="successMessage" class="success-message" style="color: green; font-weight: bold;">
   {{ successMessage }}
 </div>
-  <div class="flex justify-center">
-    <p>Already have an account? <a routerLink="/login">Sign in</a></p>
-  
+
+<div class="flex justify-center">
+  <p>Already have an account? <a routerLink="/login">Sign in</a></p>
+</div>

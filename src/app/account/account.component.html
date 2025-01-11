@@ -1,59 +1,169 @@
 <div class="flex justify-center">
-    <div class="w-75">
-        <h1>Your account</h1>
-    </div>
+  <div class="w-75">
+    <h1>Your account</h1>
+  </div>
 </div>
+
 <div class="flex justify-center">
+  <form #accountForm="ngForm" (ngSubmit)="saveChanges()" class="w-75 border padding-2" novalidate>
     <div class="w-75">
-        
-        <div class="w-50">
-            <div class="  flex space-between" style="align-items: end;">
-                <div>
-                    <p>Full name</p>
-                    <p>Muhammad Ali Khan</p>
-                </div>
-            <fa-icon [icon]="faPen" style="float: right; display: inline; margin-bottom: 16px;"></fa-icon>
+      
+      <!-- Full Name -->
+      <div class="w-50">
+        <div class="flex space-between" style="align-items: end;">
+          <div>
+            <p>Full name</p>
+            <input 
+              [(ngModel)]="fullName" 
+              [ngModelOptions]="{ standalone: true }"
+              type="text" 
+              class="edit-input"
+              required
+              minlength="2"
+              maxlength="50"
+              pattern="^[A-Za-zÀ-ÿ'’.\- ]+$"
+              #fullNameRef="ngModel"
+            />
+            <div *ngIf="fullNameRef.invalid && (fullNameRef.dirty || fullNameRef.touched)">
+              <small *ngIf="fullNameRef.errors?.['required']">Full name is required.</small>
+              <small *ngIf="fullNameRef.errors?.['pattern']">Letters, dash (-), and spaces only.</small>
+            </div>
+          </div>
         </div>
-        <hr>
+        <hr />
+      </div>
+
+      <!-- Username -->
+      <div class="w-50">
+        <div class="flex space-between" style="align-items: end;">
+          <div>
+            <p>Username</p>
+            <input 
+              type="text" 
+              [(ngModel)]="username" 
+              name="username"
+              required
+              minlength="3"
+              maxlength="20"
+              pattern="^[a-zA-Z0-9_-]+$"
+              (input)="usernameError = null" 
+              #usernameRef="ngModel"
+            />
+            <div *ngIf="usernameError">
+              <small>{{ usernameError }}</small>
+            </div>
+            <div *ngIf="usernameRef.invalid && (usernameRef.dirty || usernameRef.touched)">
+              <small *ngIf="usernameRef.errors?.['required']">Username is required.</small>
+              <small *ngIf="usernameRef.errors?.['pattern']">Only letters, numbers, underscores, and hyphens allowed.</small>
+              <small *ngIf="usernameRef.errors?.['minlength']">Minimum 3 characters required.</small>
+            </div>
+          </div>
         </div>
-        <div class="w-50">
-            <div class="  flex space-between" style="align-items: end;">
-                <div>
-                    <p>Username</p>
-                    <p>Ali1234</p>
-                </div>
-            <fa-icon [icon]="faPen" style="float: right; display: inline; margin-bottom: 16px;"></fa-icon>
+        <hr />
+      </div>
+
+      <!-- Password -->
+      <div class="w-50">
+        <div class="flex space-between" style="align-items: end;">
+          <div>
+            <p>Password</p>
+            <input 
+              type="password"
+              [(ngModel)]="password"
+              name="password"
+              required
+              minlength="6"
+              maxlength="64"
+              #passwordRef="ngModel"
+            />
+            <div *ngIf="passwordRef.invalid && (passwordRef.dirty || passwordRef.touched)">
+              <small *ngIf="passwordRef.errors?.['required']">Password is required.</small>
+              <small *ngIf="passwordRef.errors?.['minlength']">Minimum 6 characters required.</small>
+              <small *ngIf="passwordRef.errors?.['maxlength']">Maximum 64 characters allowed.</small>
+            </div>
+          </div>
         </div>
-        <hr>
+        <hr />
+      </div>
+
+      <!-- Repeat Password -->
+      <div class="w-50">
+        <div class="flex space-between" style="align-items: end;">
+          <div>
+            <p>Repeat Password</p>
+            <input 
+              type="password"
+              [(ngModel)]="repeatPassword"
+              name="repeatPassword"
+              required
+              minlength="6"
+              maxlength="64"
+              #repeatPasswordRef="ngModel"
+            />
+            <div *ngIf="repeatPasswordRef.invalid && (repeatPasswordRef.dirty || repeatPasswordRef.touched)">
+              <small *ngIf="repeatPasswordRef.errors?.['required']">Password is required.</small>
+              <small *ngIf="repeatPasswordRef.errors?.['minlength']">Minimum 6 characters required.</small>
+              <small *ngIf="repeatPasswordRef.errors?.['maxlength']">Maximum 64 characters allowed.</small>
+            </div>
+            <div *ngIf="repeatPasswordRef.touched && password !== repeatPassword">
+              <small>Passwords do not match.</small>
+            </div>
+          </div>
         </div>
-        <div class="w-50">
-            <div class="  flex space-between" style="align-items: end;">
-                <div>
-                    <p>Password</p>
-                    <p>************</p>
-                </div>
-            <fa-icon [icon]="faPen" style="float: right; display: inline; margin-bottom: 16px;"></fa-icon>
+        <hr />
+      </div>
+
+      <!-- Email -->
+      <div class="w-50">
+        <div class="flex space-between" style="align-items: end;">
+          <div>
+            <p>E-mail</p>
+            <input 
+              type="text"
+              [(ngModel)]="email"
+              name="email"
+              required
+              email
+              (input)="emailError = null"
+              #emailRef="ngModel"
+            />
+            <div *ngIf="emailError">
+              <small>{{ emailError }}</small>
+            </div>
+            <div *ngIf="emailRef.invalid && (emailRef.dirty || emailRef.touched)">
+              <small *ngIf="emailRef.errors?.['required']">Email is required.</small>
+              <small *ngIf="emailRef.errors?.['email']">Enter a valid email.</small>
+            </div>
+          </div>
         </div>
-        <hr>
-        </div>
-        <div class="w-50">
-            <div class="  flex space-between" style="align-items: end;">
-                <div>
-                    <p>E-mail</p>
-                    <p>mak_121212&#64;hotmail.com</p>
-                </div>
-            <fa-icon [icon]="faPen" style="float: right; display: inline; margin-bottom: 16px;"></fa-icon>
-        </div>
-        <hr>
-        <div style="float: right;">
-            <button style="color: white; background-color: gray; margin-right: 10px;">Cancel</button>
-            <button class="bg-purple   color-white">Save</button>
-        </div>
-        </div>
+        <hr />
+      </div>
+
+      <!-- Save Button -->
+      <div style="float: right;">
+        <button
+          type="submit"
+          class="bg-purple color-white"
+          [disabled]="
+            accountForm.invalid ||
+            password !== repeatPassword ||
+            emailError || 
+            usernameError
+          "
+        >
+          Save
+        </button>
+      </div>
     </div>
+  </form>
 </div>
-<div class="flex justify-center">
-    <div class="w-75">
-        
-    </div>
+
+<!-- Backend Error Message -->
+<div *ngIf="backendErrorMessage" class="error-message">
+  {{ backendErrorMessage }}
+</div>
+
+<!-- Success Message -->
+<div *ngIf="successMessage" class="success-message" style="color: green; font-weight: bold;">
+  {{ successMessage }}
 </div>

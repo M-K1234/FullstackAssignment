@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -22,9 +22,16 @@ export class AuthService {
     const token = localStorage.getItem('token');
     return {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`, // Attach token to Authorization header
+        Authorization: `Bearer ${token}`, 
       }),
     };
+  }
+
+  checkEmailAndUsername(email: string, username: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    const body = { email, username };
+    return this.http.post('http://localhost:8081/auth/check-duplicates', body, { headers });
   }
 
   validateToken(): Observable<boolean> {
@@ -43,6 +50,11 @@ export class AuthService {
       email,
       username,
       password
-    });
-  }
+    }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        // Pass the backend error message
+        return throwError(() => error.error.error || 'An unexpected error occurred.');
+      })
+    );
+  }  
 }
