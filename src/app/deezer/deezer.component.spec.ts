@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeezerComponent } from './deezer.component';
+import { testingServices } from '../../test';
 
 describe('DeezerComponent', () => {
   let component: DeezerComponent;
@@ -8,7 +9,7 @@ describe('DeezerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeezerComponent]
+      imports: [DeezerComponent], providers: testingServices
     })
     .compileComponents();
 

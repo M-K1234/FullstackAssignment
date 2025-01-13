@@ -16,6 +16,8 @@ export class LoginComponent {
   password: string = '';
   successMessage: string | null = null;
   errorMessage: string | null = null;
+  // for testing
+  timeoutId: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -45,7 +47,7 @@ export class LoginComponent {
         this.successMessage = 'Login successful! Redirecting to homepage...';
   
         // Clear success message after 2 seconds and redirect
-        setTimeout(() => {
+        this.timeoutId = setTimeout(() => {
           this.successMessage = null; // Clear success message
           window.location.href = '/home'; // Redirect to homepage
         }, 2000);
