@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccountComponent } from './account.component';
 import { testingServices } from '../../test';
+import { AccountService } from '../../services/account.service';
+import { of } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 describe('AccountComponent', () => {
   let component: AccountComponent;
