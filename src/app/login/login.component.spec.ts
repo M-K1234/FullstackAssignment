@@ -81,6 +81,35 @@ describe('onsubmit method', () => {
     expect(localStorage.getItem('email')).toBe('ali@mail.dk');
     clearTimeout(component.timeoutId); // prevent page refresh, so jasmine doesn't disconnect
   });
+
+  //If the email is not in a valid format (eg "test" without "@"), an error message should be displayed.
+  it('should give error message when email format is invalid', () => {
+    component.email = 'invalidEmail'; // Ugyldigt format
+    component.password = 'password123';
+   
+    component.onsubmit();
+   
+    expect(component.errorMessage).toBe('Invalid email format.');
+  });  
+
+  //This ensures that a generic error message is displayed for server problems.
+  it('should handle server errors gracefully', () => {
+    component.onsubmit();
+    request = httpTesting.expectOne('http://localhost:8081/auth/login');
+    request.flush(null, { status: 500, statusText: 'Internal Server Error' });
+
+    expect(component.errorMessage).toBe('An unexpected error occurred. Please try again later.');
+  });
+
+  //This ensures that the correct error message is displayed in case of incorrect login.
+  it('should show error message when credentials are incorrect', () => {
+    component.onsubmit();
+    request = httpTesting.expectOne('http://localhost:8081/auth/login');
+    request.flush(null, { status: 401, statusText: 'Unauthorized' });
+
+    expect(component.errorMessage).toBe('Invalid email or password.');
+  });
+
 });
 
 

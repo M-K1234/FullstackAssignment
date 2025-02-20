@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { catchError, throwError, timeout } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +33,14 @@ export class LoginComponent {
       this.triggerErrorFadeOut(); // Trigger fade-out for error message
       return;
     }
+
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.email)) {
+    this.errorMessage = 'Invalid email format.';
+    this.triggerErrorFadeOut();
+    return;
+    }
   
     // Make login request
     this.http.post('http://localhost:8081/auth/login', {
@@ -54,9 +63,18 @@ export class LoginComponent {
       },
       error: (err) => {
         console.error(err);
+
+        // Håndterer forskellige HTTP-fejlstatusser og viser passende fejlmeddelelser
+        if (err.status === 401) {
+          this.errorMessage = 'Invalid email or password.'; // Fejl ved forkerte loginoplysninger 
+        } else if (err.status === 500) {
+          this.errorMessage = 'An unexpected error occurred. Please try again later.'; // Serverfejl  
+        } else {
+          this.errorMessage = err.error?.error || 'Login failed. Please check your credentials.'; // Standard fejlmeddelelse 
+        }
   
         // Display error message from backend or fallback
-        this.errorMessage = err.error?.error || 'Login failed. Please check your credentials.';
+        //this.errorMessage = err.error?.error || 'Login failed. Please check your credentials.';
   
         // Trigger fade-out for error message
         this.triggerErrorFadeOut();
